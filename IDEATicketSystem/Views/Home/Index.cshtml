@@ -1,8 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<IDEATicketSystem.Models.EmailReceived>
+<h2>Recent Support Emails</h2>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sender</th>
+                <th>Subject</th>
+                <th>Received</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var email in Model)
+            {
+                <tr>
+                    <td>@email.Sender</td>
+                    <td>@email.Subject</td>
+                    <td>@email.EmailReceivedTimeStamped</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No emails found.</p>
+}
