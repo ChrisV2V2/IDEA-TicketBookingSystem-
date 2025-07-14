@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joy\\source\\repos\\IDEATicketSystem\\IDEATicketSystem\\IDEATicketSystem.csproj": {}
+    "C:\\Users\\chris\\source\\repos\\IDEA-TicketBookingSystem-\\IDEATicketSystem\\IDEATicketSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joy\\source\\repos\\IDEATicketSystem\\IDEATicketSystem\\IDEATicketSystem.csproj": {
+    "C:\\Users\\chris\\source\\repos\\IDEA-TicketBookingSystem-\\IDEATicketSystem\\IDEATicketSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joy\\source\\repos\\IDEATicketSystem\\IDEATicketSystem\\IDEATicketSystem.csproj",
+        "projectUniqueName": "C:\\Users\\chris\\source\\repos\\IDEA-TicketBookingSystem-\\IDEATicketSystem\\IDEATicketSystem.csproj",
         "projectName": "IDEATicketSystem",
-        "projectPath": "C:\\Users\\Joy\\source\\repos\\IDEATicketSystem\\IDEATicketSystem\\IDEATicketSystem.csproj",
-        "packagesPath": "C:\\Users\\Joy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joy\\source\\repos\\IDEATicketSystem\\IDEATicketSystem\\obj\\",
+        "projectPath": "C:\\Users\\chris\\source\\repos\\IDEA-TicketBookingSystem-\\IDEATicketSystem\\IDEATicketSystem.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\source\\repos\\IDEA-TicketBookingSystem-\\IDEATicketSystem\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Joy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,13 +40,24 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.70.0, )"
+            },
+            "Google.Apis.Gmail.v1": {
+              "target": "Package",
+              "version": "[1.70.0.3833, )"
+            },
+            "Google.Apis.Oauth2.v2": {
+              "target": "Package",
+              "version": "[1.68.0.1869, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.7, )"
@@ -84,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

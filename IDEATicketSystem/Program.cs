@@ -31,4 +31,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+var gmailService = TicketService.GetGmailService();
+Console.WriteLine("Authentication successful! Gmail service is ready.");
+
 app.Run();
+
