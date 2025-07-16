@@ -2,8 +2,8 @@
 {
     public enum SupportEngineer
     {
-        Katleho,
-        Chris,
-        Joy
+        Katleho = 0,
+        Chris = 1,
+        Joy = 2
     }
 }

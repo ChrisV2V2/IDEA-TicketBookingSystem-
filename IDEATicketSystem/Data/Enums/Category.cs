@@ -2,11 +2,11 @@
 {
     public enum Category
     {
-        AWS,
-        Micrsoft365Outlook,
-        Troubleshooting,
-        BMS,
-        CMS,
-        Frontend
+        AWS = 0,
+        Micrsoft365Outlook = 1,
+        Troubleshooting = 2,
+        BMS = 3,
+        CMS = 4,
+        Frontend = 5
     }
 }

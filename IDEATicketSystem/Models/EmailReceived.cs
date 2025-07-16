@@ -10,6 +10,7 @@ namespace IDEATicketSystem.Models
         public string Subject { get; set; }
         public string EmailContents { get; set; } //Email body
         public DateTime EmailReceivedTimeStamped { get; set; }
+        public int EmailAttachmentId { get; set; }
         public EmailAttachment emailAttachment { get; set; }
     }
 }

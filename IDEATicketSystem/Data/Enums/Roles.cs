@@ -2,7 +2,7 @@
 {
     public enum Roles
     {
-        SystemAdmin,
-        SupportEngineer
+        SystemAdmin = 0,
+        SupportEngineer = 1
     }
 }

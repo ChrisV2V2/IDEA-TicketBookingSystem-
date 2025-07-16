@@ -1,15 +1,37 @@
 ﻿using Google.Apis.Gmail.v1;
 using Google.Apis.Gmail.v1.Data;
+using IDEATicketSystem.Data;
 using IDEATicketSystem.Models;
+using Microsoft.Data.SqlClient;
 using System.Text;
 
 public class GmailEmailService
 {
     private readonly GmailService _service;
+    private readonly ApplicationDbContext _context;
 
-    public GmailEmailService()
+    public GmailEmailService(ApplicationDbContext context)
     {
         _service = TicketService.GetGmailService();
+        _context = context;
+    }
+
+    public void SavUnreadEmailsToDatabase()
+    {
+        IList<Message> unreadMessages = GetUnreadMessages();
+        List<EmailReceived> emailList = new();
+
+        foreach(var gmailMessage in unreadMessages)
+        {
+            var email = ConvertToEmailReceived(gmailMessage);
+            emailList.Add(email);
+        }
+
+        if (emailList.Any())
+        {
+            _context.ReceivedEmails.AddRange(emailList);
+            _context.SaveChanges();
+        }
     }
 
     public IList<Message> GetUnreadMessages()

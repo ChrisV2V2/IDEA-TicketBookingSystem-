@@ -40,6 +40,14 @@ namespace IDEATicketSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("EmailAttachments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Attachment = new byte[] { 0 },
+                            EmailId = 1
+                        });
                 });
 
             modelBuilder.Entity("IDEATicketSystem.Models.EmailReceived", b =>
@@ -49,6 +57,9 @@ namespace IDEATicketSystem.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EmailAttachmentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("EmailContents")
                         .IsRequired()
@@ -65,14 +76,22 @@ namespace IDEATicketSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("emailAttachmentId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("emailAttachmentId");
+                    b.HasIndex("EmailAttachmentId");
 
                     b.ToTable("ReceivedEmails");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EmailAttachmentId = 1,
+                            EmailContents = "This is a test email please ignore",
+                            EmailReceivedTimeStamped = new DateTime(2025, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Sender = "joy@myideafrica.com",
+                            Subject = "Test"
+                        });
                 });
 
             modelBuilder.Entity("IDEATicketSystem.Models.Ticket", b =>
@@ -102,6 +121,17 @@ namespace IDEATicketSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tickets");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AssignedTimeStamp = new DateTime(2025, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Owner = "joy@myideafrica.com",
+                            category = 1,
+                            status = 0,
+                            supportEngineer = 0
+                        });
                 });
 
             modelBuilder.Entity("IDEATicketSystem.Models.User", b =>
@@ -126,13 +156,22 @@ namespace IDEATicketSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Password = "joy@123",
+                            Role = 1,
+                            Username = "joy@myideafrica.com"
+                        });
                 });
 
             modelBuilder.Entity("IDEATicketSystem.Models.EmailReceived", b =>
                 {
                     b.HasOne("IDEATicketSystem.Models.EmailAttachment", "emailAttachment")
                         .WithMany()
-                        .HasForeignKey("emailAttachmentId")
+                        .HasForeignKey("EmailAttachmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -4,6 +4,7 @@ using IDEATicketSystem.Models;
 using Microsoft.EntityFrameworkCore;
 using IDEATicketSystem.Data;
 
+
 namespace IDEATicketSystem.Controllers;
 
 public class HomeController : Controller
@@ -16,7 +17,6 @@ public class HomeController : Controller
         _logger = logger;
         _context = context;
     }
-
     public async Task<IActionResult> SaveEmailsToDb()
     {
         var gmailService = new GmailEmailService();
@@ -33,6 +33,40 @@ public class HomeController : Controller
         TempData["Message"] = "Emails saved as tickets successfully!";
         return RedirectToAction("Index");
     }
+
+    //public async Task<IActionResult> SaveEmailsToDb()
+    //{
+    //    try
+    //    {
+    //        var gmailService = new GmailEmailService(_context);
+    //        var unreadMessages = gmailService.GetUnreadMessages();
+
+    //        foreach(var msg in unreadMessages)
+    //        {
+    //            var email = gmailService.ConvertToEmailReceived(msg);
+
+    //            bool exists = _context.ReceivedEmails.Any(e =>
+    //            e.Sender == email.Sender &&
+    //            e.Subject == email.Subject &&
+    //            e.EmailReceivedTimeStamped == email.EmailReceivedTimeStamped
+    //            );
+
+    //            if (!exists)
+    //            {
+    //                _context.ReceivedEmails.Add(email);
+    //            }
+    //        }
+    //        await _context.SaveChangesAsync();
+
+    //        TempData["Message"] = "Unread emails fetch and saved succesfully";
+    //    }
+    //    catch(Exception ex)
+    //    {
+    //        _logger.LogError(ex, "Failed to fetch or save gmail messages.");
+    //        TempData["Error"] = "An error occured while saving emails.";
+    //    }
+    //    return RedirectToAction("Index");
+    //}
 
     public IActionResult Index()
     {
